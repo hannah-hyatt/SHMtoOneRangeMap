@@ -17,13 +17,13 @@ print ("variables set")
 out_raster = arcpy.sa.Reclassify(SHM, "VALUE", "0 0.72999 NODATA;0.73 1 1", "DATA"); out_raster.save(binarySHM)
 print ("binary raster created")
 
-#if model is already binary procede to the next step
+#if model is already binary proceed to the next step
 
 #turn binary raster into polygon
 arcpy.conversion.RasterToPolygon(binarySHM, polySHM, "SIMPLIFY", "Value", "SINGLE_OUTER_PART", None)
 print ("shm raster to poly")
 
-#if model is already a polygon, procede to the next step and update the polySHM with the location of polygonized SHM
+#if model is already a polygon, proceed to the next step and update the polySHM with the location of polygonized SHM
 
 #buffer shm polygon by 1 km to create a One Range map
 arcpy.analysis.Buffer(polySHM, buff1km, "1 Kilometers", "FULL", "ROUND", "ALL", None, "PLANAR")
